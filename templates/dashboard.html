@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Dashboard</title>
+</head>
+
+<body>
+
+<h1>Employee Management System</h1>
+
+<a href="/add">Add Employee</a>
+
+<form method="GET" action="/">
+<input type="text" name="search" placeholder="Search employee">
+<button type="submit">Search</button>
+</form>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Salary</th>
+<th>Actions</th>
+</tr>
+
+{% for emp in employees %}
+
+<tr>
+<td>{{ emp.id }}</td>
+<td>{{ emp.name }}</td>
+<td>{{ emp.email }}</td>
+<td>{{ emp.department }}</td>
+<td>{{ emp.salary }}</td>
+
+<td>
+
+<a href="/edit/{{ emp.id }}">Edit</a>
+
+<a href="/delete/{{ emp.id }}">Delete</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
