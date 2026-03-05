@@ -37,6 +37,7 @@ with app.app_context():
 # ------------------------
 @app.route('/')
 def dashboard():
+
     search = request.args.get('search')
     department_filter = request.args.get('department')
 
@@ -50,7 +51,7 @@ def dashboard():
 
     employees = query.all()
 
-    # Department Chart Data
+    # Chart Data
     dept_data = db.session.query(
         Employee.department,
         func.count(Employee.id)
@@ -69,8 +70,9 @@ def dashboard():
 # ------------------------
 # Add Employee
 # ------------------------
-@app.route('/add', methods=['GET', 'POST'])
+@app.route('/add', methods=['GET','POST'])
 def add_employee():
+
     if request.method == 'POST':
 
         new_employee = Employee(
@@ -90,7 +92,7 @@ def add_employee():
 # ------------------------
 # Edit Employee
 # ------------------------
-@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+@app.route('/edit/<int:id>', methods=['GET','POST'])
 def edit_employee(id):
 
     employee = Employee.query.get_or_404(id)
