@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Employee Dashboard</title>
-</head>
+{% extends 'base.html' %}
+{% block content %}
 
-<body>
+<h3>Search & Filter</h3>
 
-<h1>Employee Management System</h1>
+<form method="GET">
 
-<a href="/add">Add Employee</a>
+<input type="text" name="search" placeholder="Search by name">
 
-<form method="GET" action="/">
-<input type="text" name="search" placeholder="Search employee">
-<button type="submit">Search</button>
+<select name="department">
+<option value="">All Departments</option>
+<option>HR</option>
+<option>IT</option>
+<option>Finance</option>
+<option>Marketing</option>
+</select>
+
+<button type="submit">Filter</button>
+
 </form>
 
-<table border="1">
+<h3>Employee List</h3>
+
+<table>
 
 <tr>
 <th>ID</th>
@@ -29,6 +35,7 @@
 {% for emp in employees %}
 
 <tr>
+
 <td>{{ emp.id }}</td>
 <td>{{ emp.name }}</td>
 <td>{{ emp.email }}</td>
@@ -36,11 +43,8 @@
 <td>{{ emp.salary }}</td>
 
 <td>
-
 <a href="/edit/{{ emp.id }}">Edit</a>
-
 <a href="/delete/{{ emp.id }}">Delete</a>
-
 </td>
 
 </tr>
@@ -49,5 +53,36 @@
 
 </table>
 
-</body>
-</html>
+<h3>Department Distribution</h3>
+
+<canvas id="deptChart"></canvas>
+
+<script>
+
+const ctx = document.getElementById('deptChart').getContext('2d');
+
+const chart = new Chart(ctx, {
+
+type: 'pie',
+
+data: {
+
+labels: {{ departments | tojson }},
+
+datasets: [{
+
+label: 'Employees',
+
+data: {{ counts | tojson }},
+
+borderWidth: 1
+
+}]
+
+}
+
+});
+
+</script>
+
+{% endblock %}
