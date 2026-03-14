@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Edit Employee</h3>
+<form method="POST">
+    <input type="text" name="name" value="{{ employee.name }}" required><br>
+    <input type="email" name="email" value="{{ employee.email }}" required><br>
+    <input type="text" name="department" value="{{ employee.department }}" required><br>
+    <input type="number" name="salary" value="{{ employee.salary }}" required><br>
+    <button type="submit">Update Employee</button>
+</form>
+
+{% endblock %}{% extends 'base.html' %}
+{% block content %}
+
+<h3>Edit Employee</h3>
+<form method="POST">
+    <input type="text" name="name" value="{{ employee.name }}" required><br>
+    <input type="email" name="email" value="{{ employee.email }}" required><br>
+    <input type="text" name="department" value="{{ employee.department }}" required><br>
+    <input type="number" name="salary" value="{{ employee.salary }}" required><br>
+    <button type="submit">Update Employee</button>
+</form>
+
+{% endblock %}

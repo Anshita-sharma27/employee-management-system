@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+}
+
+.navbar {
+    background: #333;
+    color: white;
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.container {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 8px 12px;
+}
